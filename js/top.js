@@ -186,7 +186,6 @@ function calculate() {
     const smoke = document.getElementById("smoke").value;
     const self_evaluation = document.getElementById("self-evaluation").value;
     
-    console.log(sleeptime)
     const result = 100; //TODO: 本来であれば、上記の値を参照して計算を行う。それはお任せします。
     urlSearchParams.set("result", result);
     history.replaceState("", "", `?${urlSearchParams.toString()}`)
