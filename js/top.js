@@ -69,7 +69,7 @@ function LowSpeed(){
     [
         { transform: `rotate(${rotate_long}deg)` }, // 開始時の状態
         { transform: `rotate(${rotate_long+360}deg)` } // 終了時の状態（1回転）
-    ], 
+    ],
     // タイミングに関する設定
     {
         duration: 2000, // 再生時間（2秒）
@@ -193,6 +193,20 @@ function calculate() {
     console.log(result);
     urlSearchParams.set("result", result);
     history.replaceState("", "", `?${urlSearchParams.toString()}`)
+    //計算中画面表示用
+    const black_in_calc = document.getElementsByClassName('black_in_calc')[0]; //背景を暗くするやつ
+    const virtual_popup = document.getElementsByClassName('virtual_popup')[0]; //文字とバーを表示する部分
+    const calc_text = document.getElementById('calc_text'); //計算中テキスト
+    black_in_calc.style.display = 'block';
+    virtual_popup.style.display = 'block';
+    calc_text.style.display = 'block';
+    setTimeout(function(){
+        if (result < 18) {
+            window.location.href = './title.html';
+        } else {
+            window.location.href = './title_yabai.html';
+        }
+    }, 3000); //CSSのアニメーション時間に合わせる
     if (result < 18) {
         window.location.href = `./title.html?result=${result}`;
     } else {
